@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>xlt</title>
+	<script src="./jquery.js"></script>
+	<script>
+		$(document).ready(function () {
+			var url = $("#url");
+			url.on("keypress", function (e) {
+
+				if (e.keyCode == 13) {
+
+					// Cancel the default action on keypress event
+					e.preventDefault();
+
+					var link = url.val();
+
+					$.ajax({
+
+						url: "http://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link,
+						type: 'GET',
+						headers: {
+							'Access-Control-Allow-Origin': '*',
+							"access-control-allow-methods": "GET"
+						},
+						success: function (data) {
+							console.log(data);
+						},
+						error: function (err) {
+							console.log(err);
+						},
+						beforeSend: function (xhr) {
+							// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+						}
+					});
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	enter long link :
+	<input type="text" id="url" />
+
+	<a href="http://shink.in/api/0/id/118161/auth_token/klPCvo?s=https://www.youtube.com/watch?v=BkBqYlLjIeA">check</a>
+
+
+</body>
+
+</html>
