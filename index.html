@@ -16,24 +16,37 @@
 
 					var link = url.val();
 
-					$.ajax({
-
-						url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link + "/",
-						type: 'GET',
-						headers: {
-							'Access-Control-Allow-Origin': '*',
-							"Access-control-allow-methods": "GET"
-						},
-						success: function (data) {
-							console.log(data);
-						},
-						error: function (err) {
-							console.log(err);
-						},
-						beforeSend: function (xhr) {
-							// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+					$.ajaxPrefilter(function (options) {
+						if (options.crossDomain && jQuery.support.cors) {
+							var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+							options.url = http + '//auto-link-shorten.herokuapp.com/' + options.url;
 						}
 					});
+
+					$.get(
+						"https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link,
+						function (data) {
+							console.log("> ", data);
+						});
+
+					// $.ajax({
+
+					// 	url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link + "/",
+					// 	type: 'GET',
+					// 	headers: {
+					// 		'Access-Control-Allow-Origin': '*',
+					// 		"Access-control-allow-methods": "GET"
+					// 	},
+					// 	success: function (data) {
+					// 		console.log(data);
+					// 	},
+					// 	error: function (err) {
+					// 		console.log(err);
+					// 	},
+					// 	beforeSend: function (xhr) {
+					// 		// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+					// 	}
+					// });
 				}
 			});
 		});
