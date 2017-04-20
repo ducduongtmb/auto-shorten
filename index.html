@@ -18,11 +18,11 @@
 
 					$.ajax({
 
-						url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link,
+						url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link+"/",
 						type: 'GET',
 						headers: {
 							'Access-Control-Allow-Origin': '*',
-							"access-control-allow-methods": "GET"
+							"Access-control-allow-methods": "GET"
 						},
 						success: function (data) {
 							console.log(data);
