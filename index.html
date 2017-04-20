@@ -21,7 +21,7 @@
 						url: "http://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link,
 						type: 'GET',
 						headers: {
-							'Access-Control-Allow-Origin': '*',
+							'Access-Control-Allow-Origin': 'https://auto-link-shorten.herokuapp.com',
 							"access-control-allow-methods": "GET"
 						},
 						success: function (data) {
@@ -31,7 +31,7 @@
 							console.log(err);
 						},
 						beforeSend: function (xhr) {
-							xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+							// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 						}
 					});
 				}
