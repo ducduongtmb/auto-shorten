@@ -16,37 +16,21 @@
 
 					var link = url.val();
 
-					$.ajaxPrefilter(function (options) {
-						if (options.crossDomain && jQuery.support.cors) {
-							var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-							options.url = "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" ;
+					$.ajax({
+
+						url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link + "/",
+						type: 'GET',
+						headers: {
+							'Access-Control-Allow-Origin': '*',
+							"Access-control-allow-methods": "GET"
+						},
+						success: function (data) {
+							console.log(data);
+						},
+						error: function (err) {
+							console.log(err);
 						}
 					});
-
-					$.get(
-						link,
-						function (data) {
-							console.log("> ", data);
-						});
-
-					// $.ajax({
-
-					// 	url: "https://shink.in/api/0/id/118161/auth_token/klPCvo?s=" + link + "/",
-					// 	type: 'GET',
-					// 	headers: {
-					// 		'Access-Control-Allow-Origin': '*',
-					// 		"Access-control-allow-methods": "GET"
-					// 	},
-					// 	success: function (data) {
-					// 		console.log(data);
-					// 	},
-					// 	error: function (err) {
-					// 		console.log(err);
-					// 	},
-					// 	beforeSend: function (xhr) {
-					// 		// xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-					// 	}
-					// });
 				}
 			});
 		});
@@ -58,7 +42,7 @@
 	enter long link :
 	<input type="text" id="url" />
 
-	<a href="http://shink.in/api/0/id/118161/auth_token/klPCvo?s=https://www.youtube.com/watch?v=BkBqYlLjIeA">check</a>
+	<!--<a href="http://shink.in/api/0/id/118161/auth_token/klPCvo?s=https://www.youtube.com/watch?v=BkBqYlLjIeA">check</a>-->
 
 
 </body>
